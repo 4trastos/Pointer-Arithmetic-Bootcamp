@@ -1,0 +1,14 @@
+Objetivo:
+----------
+Escribe una función `set_to_100` que reciba un puntero a int
+y modifique el valor apuntado a 100.
+
+Prototipo:
+----------
+void set_to_100(int *ptr);
+
+Ejemplo:
+--------
+int a = 5;
+set_to_100(&a);
+// ahora a == 100

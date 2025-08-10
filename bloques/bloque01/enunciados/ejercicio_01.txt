@@ -1,0 +1,20 @@
+Objetivo:
+----------
+Escribe una función llamada `print_address` que reciba un entero como parámetro y
+muestre por pantalla la dirección de memoria donde se almacena ese entero.
+
+Restricciones:
+--------------
+- Usa un puntero para almacenar la dirección del entero.
+- La impresión debe hacerse con `%p`.
+
+Prototipo:
+----------
+void print_address(int value);
+
+Ejemplo de uso:
+---------------
+Entrada:
+    print_address(42);
+Salida (ejemplo):
+    0x7ffee2b4c88c

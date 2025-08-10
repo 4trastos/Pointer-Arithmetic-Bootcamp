@@ -1,0 +1,13 @@
+Objetivo:
+----------
+Crea una función `distance_between` que reciba dos punteros a int
+y devuelva la diferencia (en número de elementos) entre ellos.
+
+Prototipo:
+----------
+int distance_between(int *p1, int *p2);
+
+Ejemplo:
+--------
+int arr[5];
+distance_between(&arr[0], &arr[3]); // retorna 3

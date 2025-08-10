@@ -1,0 +1,13 @@
+Objetivo:
+----------
+Declara un puntero a constante int (`const int *ptr`)
+e intenta leer el valor, pero no modificarlo.
+
+Prototipo:
+----------
+int read_const_value(const int *ptr);
+
+Restricciones:
+--------------
+- No puedes cambiar el valor al que apunta.
+- Devuelve el valor leído.

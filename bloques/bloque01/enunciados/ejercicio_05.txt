@@ -1,0 +1,13 @@
+Objetivo:
+----------
+Escribe una función `print_array` que recorra un array de enteros
+usando exclusivamente aritmética de punteros, y lo imprima por pantalla.
+
+Prototipo:
+----------
+void print_array(int *arr, int size);
+
+Ejemplo:
+--------
+int arr[] = {1, 2, 3};
+print_array(arr, 3); // imprime: 1 2 3

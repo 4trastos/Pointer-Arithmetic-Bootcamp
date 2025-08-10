@@ -1,0 +1,12 @@
+Objetivo:
+----------
+Escribe una función `pointer_size` que devuelva el tamaño en bytes
+de un puntero a int en la arquitectura actual.
+
+Prototipo:
+----------
+size_t pointer_size(void);
+
+Ejemplo:
+--------
+En un sistema de 64 bits podría devolver 8.

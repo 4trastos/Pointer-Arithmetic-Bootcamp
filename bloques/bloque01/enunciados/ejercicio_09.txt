@@ -1,0 +1,14 @@
+Objetivo:
+----------
+Escribe una función `is_null` que reciba un puntero a int
+y devuelva 1 si es NULL, o 0 en caso contrario.
+
+Prototipo:
+----------
+int is_null(int *ptr);
+
+Ejemplo:
+--------
+is_null(NULL); // retorna 1
+int a;
+is_null(&a);   // retorna 0

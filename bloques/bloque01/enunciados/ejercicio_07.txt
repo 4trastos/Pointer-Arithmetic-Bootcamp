@@ -1,0 +1,13 @@
+Objetivo:
+----------
+Declara un puntero constante a int (`int *const ptr`)
+y úsalo para modificar el valor de una variable.
+
+Prototipo:
+----------
+void set_value_with_const_pointer(void);
+
+Restricciones:
+--------------
+- No cambies la dirección a la que apunta el puntero.
+- Debes modificar el valor de la variable usando el puntero.

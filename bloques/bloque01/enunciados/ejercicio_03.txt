@@ -1,0 +1,14 @@
+Objetivo:
+----------
+Escribe una función `increment` que reciba un puntero a int
+y sume 1 al valor apuntado.
+
+Prototipo:
+----------
+void increment(int *ptr);
+
+Ejemplo:
+--------
+int a = 41;
+increment(&a);
+// ahora a == 42
