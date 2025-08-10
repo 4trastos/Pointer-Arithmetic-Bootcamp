@@ -105,5 +105,3 @@ Eres libre de usarlo, modificarlo y compartirlo.
 💡 **Consejo:** No intentes correr antes de caminar.
 Domina cada bloque antes de pasar al siguiente.
 La aritmética de punteros no se memoriza… se entiende practicando.
-
-```
