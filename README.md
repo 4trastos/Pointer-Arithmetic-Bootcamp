@@ -1,66 +1,109 @@
-# Pointer-Arithmetic-Bootcamp
----
+# 🧠 Pointer Arithmetic Bootcamp
 
-**Objetivo:**
-Dominar aritmética de punteros en C, desde el nivel básico (acceso a arrays) hasta el avanzado (punteros a funciones, punteros múltiples y operaciones con memoria dinámica).
+## 📌 Descripción
+El **Pointer Arithmetic Bootcamp** es un programa intensivo de entrenamiento para dominar **punteros y aritmética de punteros en C**, desde lo más básico hasta retos avanzados.
 
-**Organización por bloques:**
+Si alguna vez te has preguntado:
+- ¿Qué pasa realmente con `*ptr` y `&var`?
+- ¿Por qué `arr + 1` avanza al siguiente elemento?
+- ¿Cómo recorrer estructuras, cadenas y arrays solo con punteros?
+- ¿Cómo se usan punteros a funciones y punteros genéricos?
 
-| Bloque | Tema principal              | Ejemplos de ejercicios                                   |
-| ------ | --------------------------- | -------------------------------------------------------- |
-| 1      | Fundamentos de punteros     | Obtener dirección, desreferenciar, sumar/restar punteros |
-| 2      | Punteros y arrays           | Acceso secuencial, indexación vs aritmética              |
-| 3      | Punteros y cadenas          | Navegación por `char*`, contar, copiar, buscar           |
-| 4      | Punteros y estructuras      | Navegar campos, `->` vs `*`                              |
-| 5      | Punteros a punteros         | `char **argv`, tablas dinámicas                          |
-| 6      | Punteros y memoria dinámica | `malloc`, `free`, aritmética sobre bloques               |
-| 7      | Punteros a funciones        | Invocación, arrays de funciones                          |
-| 8      | Casts y punteros genéricos  | `(void*)`, reinterpretación de datos                     |
-| 9      | Punteros y optimización     | Recorridos eficientes, aliasing                          |
-| 10     | Retos finales               | Problemas combinados y optimización de código            |
+Aquí aprenderás **todo eso** y mucho más, paso a paso, con ejercicios prácticos y tests automáticos que validan tu progreso.
 
 ---
 
-## 📂 Estructura de carpetas
+## 📂 Estructura
+Cada bloque contiene:
+- **10 ejercicios prácticos** en C.
+- **Enunciados** detallados (`enunciados/*.txt`).
+- **Plantillas de solución** (`soluciones/*.c`) para que escribas tu código.
+- **Tests automáticos** (`tests/*.c`) que verifican tu solución.
+- Un script interactivo `run_bloque.sh` que te guía paso a paso.
 
 ```
-Pointer-Arithmetic-Bootcamp/
-│
-├── bloque_01/
+
+bloques/
+├── bloque\_01/
 │   ├── enunciados/
-│   │   ├── ejercicio_01.txt
-│   │   ├── ...
-│   ├── tests/
-│   │   ├── ejercicio_01_test.c
-│   │   ├── ...
 │   ├── soluciones/
-│   │   ├── ejercicio_01.c
-│   │   ├── ...
-│   ├── run_bloque.sh
-│
-├── bloque_02/
+│   ├── tests/
+│   ├── run\_bloque.sh
+├── bloque\_02/
 │   ├── ...
-│
-├── menu.sh
-├── README.md
+
+````
+
+---
+
+## 🚀 Instalación y uso
+
+### 1️⃣ Clonar el repositorio
+```bash
+git clone https://github.com/tuusuario/Pointer-Arithmetic-Bootcamp.git
+cd Pointer-Arithmetic-Bootcamp
+````
+
+### 2️⃣ Dar permisos de ejecución
+
+```bash
+chmod +x menu.sh
+find bloques -name "run_bloque.sh" -exec chmod +x {} \;
+```
+
+### 3️⃣ Iniciar el Bootcamp
+
+```bash
+./menu.sh
 ```
 
 ---
 
-## 🔹 Dinámica del flujo
+## 📘 Progresión de bloques
 
-
-1. El alumno entra a `menu.sh` y selecciona un bloque.
-2. `run_bloque.sh` muestra el enunciado (`enunciados/*.txt`).
-3. Abre `vim` para editar la solución (`soluciones/*.c` vacía al inicio).
-4. Compila y ejecuta el test (`tests/*.c`).
-5. Si pasa el test, se desbloquea el siguiente ejercicio.
-6. Al finalizar el bloque, se muestra un **código de desbloqueo** para el siguiente.
+| Bloque | Tema principal                                                   |
+| ------ | ---------------------------------------------------------------- |
+| 1      | Fundamentos de punteros (direcciones, desreferencia, suma/resta) |
+| 2      | Punteros y arrays                                                |
+| 3      | Punteros y cadenas                                               |
+| 4      | Punteros y estructuras                                           |
+| 5      | Punteros a punteros                                              |
+| 6      | Memoria dinámica y punteros                                      |
+| 7      | Punteros a funciones                                             |
+| 8      | Casts y punteros genéricos                                       |
+| 9      | Optimización con punteros                                        |
+| 10     | Retos finales combinados                                         |
 
 ---
 
-* Aquí **los tests serán en C** (con `assert` o verificaciones personalizadas).
-* Compilación automática con `gcc`.
-* Ejercicios siempre centrados en punteros y sus operaciones.
+## 🆓 Modo libre
+
+Si quieres practicar sin restricciones, usa la opción **"Modo libre"** desde el menú principal.
+En este modo puedes acceder a cualquier bloque sin necesidad de desbloquear los anteriores.
+⚠️ **El progreso no se guarda** en modo libre.
 
 ---
+
+## 🏆 Objetivo final
+
+Al terminar este bootcamp serás capaz de:
+
+* Usar punteros con total seguridad y confianza.
+* Manipular cualquier tipo de dato en memoria.
+* Escribir código en C más eficiente y optimizado.
+* Comprender cómo trabaja realmente la memoria en bajo nivel.
+
+---
+
+## 📜 Licencia
+
+Este proyecto está bajo la licencia MIT.
+Eres libre de usarlo, modificarlo y compartirlo.
+
+---
+
+💡 **Consejo:** No intentes correr antes de caminar.
+Domina cada bloque antes de pasar al siguiente.
+La aritmética de punteros no se memoriza… se entiende practicando.
+
+```
