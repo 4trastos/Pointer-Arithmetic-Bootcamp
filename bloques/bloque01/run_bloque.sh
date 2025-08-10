@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# ================================================================
+# Script para ejecutar un bloque de ejercicios
+# ----------------------------------------------------------------
+# Maneja la navegación entre ejercicios, compilación y tests.
+# También gestiona el progreso y desbloquea el siguiente bloque.
+# ================================================================
+
 # Configuración inicial
 # ----------------------------------------------------------------
 ALLOW_SKIPPING=false
@@ -18,6 +25,7 @@ SCRIPT_DIR=$(dirname "$0")
 ENUNCIADOS_DIR="$SCRIPT_DIR/enunciados"
 SOLUCIONES_DIR="$SCRIPT_DIR/soluciones"
 TESTS_DIR="$SCRIPT_DIR/tests"
+PROGRESS_FILE="$SCRIPT_DIR/.progreso.tmp"
 
 # --- Validación inicial de directorios ---
 # ----------------------------------------------------------------
@@ -61,7 +69,7 @@ show_enunciado() {
 show_menu() {
     echo -e "\n${COLOR_INFO}OPCIONES:${COLOR_RESET}"
     echo -e "1. ${COLOR_INFO}[Enter]${COLOR_RESET} - Realizar el ejercicio"
-    echo -e "2. ${COLOR_INFO}s${COLOR_RESET} - Salir y volver al menú principal"
+    echo -e "2. ${COLOR_INFO}s${COLOR_RESET} - Volver al menú principal"
     if $ALLOW_SKIPPING; then
         echo -e "3. ${COLOR_INFO}n${COLOR_RESET} - Saltar al siguiente ejercicio (modo libre)"
     fi
@@ -78,8 +86,7 @@ create_solution_file() {
         cat > "$solution_file" <<EOF
 /*
  * Ejercicio $exercise_num - Pointer Arithmetic Bootcamp
- * 
- * Instrucciones:
+ * * Instrucciones:
 $(cat "$ENUNCIADOS_DIR/ejercicio_${exercise_num}.txt" 2>/dev/null | sed 's/^/ * /' || echo " * Completa este ejercicio según lo indicado")
  */
 
@@ -100,6 +107,15 @@ main_loop() {
     local i=1
     local exercise_num
     
+    # --- Lógica de progreso ---
+    # Si existe el archivo de progreso, empieza desde el siguiente ejercicio.
+    if [[ -f "$PROGRESS_FILE" ]]; then
+        i=$(($(cat "$PROGRESS_FILE") + 1))
+        echo -e "${COLOR_INFO}📝 Reanudando el progreso desde el ejercicio $i...${COLOR_RESET}"
+        sleep 2
+    fi
+    # --------------------------
+
     while [[ $i -le 10 ]]; do
         exercise_num=$(printf "%02d" $i)
         
@@ -117,11 +133,13 @@ main_loop() {
             s|S)
                 echo -e "\n${COLOR_INFO}Volviendo al menú principal...${COLOR_RESET}"
                 sleep 1
-                return 1
+                return 1 # Devuelve 1 para indicar que se debe salir de este script
                 ;;
             n|N)
                 if $ALLOW_SKIPPING; then
                     echo -e "\n${COLOR_WARNING}Saltando al siguiente ejercicio...${COLOR_RESET}"
+                    # Al saltar un ejercicio, también se guarda el progreso
+                    echo "$i" > "$PROGRESS_FILE"
                     ((i++))
                     continue
                 fi
@@ -151,6 +169,8 @@ main_loop() {
             if ./test_exec; then
                 echo -e "\n${COLOR_SUCCESS}✅ Ejercicio $exercise_num completado correctamente!${COLOR_RESET}"
                 rm -f test_exec
+                # Guarda el progreso al completar un ejercicio
+                echo "$i" > "$PROGRESS_FILE"
                 ((i++))
             else
                 echo -e "\n${COLOR_ERROR}❌ Falló el test del ejercicio $exercise_num.${COLOR_RESET}"
@@ -175,7 +195,7 @@ main_loop() {
         fi
     done
     
-    return 0
+    return 0 # Devuelve 0 para indicar un final exitoso
 }
 
 # --- Ejecución principal ---
@@ -184,9 +204,23 @@ validate_directories
 
 if main_loop; then
     echo -e "\n${COLOR_SUCCESS}🎉 ¡Felicidades! Has completado este bloque.${COLOR_RESET}"
+    
+    # Lógica para desbloquear el siguiente bloque
+    current_block_num=$(basename "$SCRIPT_DIR" | sed 's/bloque//' | sed 's/^0*//')
+    next_block_num=$((current_block_num + 1))
+    next_block_dir="../bloque$(printf "%02d" $next_block_num)"
+    
+    if [[ -d "$next_block_dir" ]]; then
+        touch "$next_block_dir/unlock_code.txt"
+        echo -e "${COLOR_SUCCESS}🔓 El Bloque $next_block_num ha sido desbloqueado.${COLOR_RESET}"
+    fi
+
+    # Elimina el archivo de progreso del bloque actual
+    rm -f "$PROGRESS_FILE" 2>/dev/null
+
     echo -e "${COLOR_INFO}Volviendo al menú principal...${COLOR_RESET}"
     sleep 2
 fi
 
 # Limpieza final
-rm -f test_exec
+rm -f test_exec 2>/dev/null
