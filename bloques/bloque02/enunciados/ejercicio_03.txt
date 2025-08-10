@@ -1,0 +1,8 @@
+Ejercicio 03 - Último elemento con punteros
+
+1) Declara un array int arr[5] = {5,10,15,20,25};
+2) Usa aritmética de punteros para acceder al ÚLTIMO elemento (sin usar arr[4]).
+3) Imprime el valor (solo el número).
+
+Salida esperada:
+25

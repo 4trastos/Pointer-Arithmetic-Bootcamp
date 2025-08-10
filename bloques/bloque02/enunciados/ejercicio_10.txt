@@ -1,0 +1,8 @@
+Ejercicio 10 - Máximo con punteros
+
+1) Declara int arr[6] = {3,9,1,12,7,4};
+2) Recorre el array usando punteros y encuentra el máximo sin usar índices.
+3) Imprime el valor máximo.
+
+Salida esperada:
+12

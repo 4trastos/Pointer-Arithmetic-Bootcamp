@@ -1,0 +1,8 @@
+Ejercicio 06 - Distancia entre punteros
+
+1) Declara int arr[7] = {10,20,30,40,50,60,70};
+2) Usa punteros p1=&arr[1]; p2=&arr[5];
+3) Calcula (p2 - p1) y imprime el resultado (número de elementos de diferencia).
+
+Salida esperada:
+4

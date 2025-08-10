@@ -1,0 +1,8 @@
+Ejercicio 09 - Indexación con puntero
+
+1) Declara int arr[5] = {7,14,21,28,35};
+2) Usa la notación p[i] (con p = arr) para imprimir el tercer elemento (índice 2).
+3) Imprime solo el número.
+
+Salida esperada:
+21

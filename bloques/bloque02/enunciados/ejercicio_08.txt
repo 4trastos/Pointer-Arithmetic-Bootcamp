@@ -1,0 +1,8 @@
+Ejercicio 08 - Modificar array con puntero
+
+1) Declara int arr[5] = {1,1,1,1,1};
+2) Usa exclusivamente aritmética de punteros para multiplicar cada elemento por 3.
+3) Imprime la línea resultante separada por espacios.
+
+Salida esperada:
+3 3 3 3 3

@@ -1,0 +1,8 @@
+Ejercicio 05 - Suma de elementos con puntero
+
+1) Declara int arr[4] = {2,4,6,8};
+2) Escribe código que sume los elementos usando un puntero (sin índices).
+3) Imprime la suma total.
+
+Salida esperada:
+20

@@ -1,0 +1,18 @@
+Ejercicio 07 - *(p++) vs *p++
+
+Explica con código la diferencia práctica entre:
+ a = *(p++);
+ b = *p++;
+
+Implementa un programa que:
+1) Declare int arr[3] = {100,200,300};
+2) Use un puntero p = arr;
+3) Asigne dos variables int a, b usando las dos formas en líneas separadas como:
+   a = *(p++);
+   b = *p++;
+4) Imprime "a b" (dos números separados por espacio).
+
+Salida esperada:
+100 200
+
+Pista: escribe el código exactamente en ese orden.

@@ -1,0 +1,8 @@
+Ejercicio 02 - Recorrer un array con puntero
+
+1) Declara un array de enteros de 5 elementos: {1,2,3,4,5}
+2) Usa un puntero para recorrer el array desde el primero al último.
+3) Imprime los elementos en una sola línea separados por espacios.
+
+Salida esperada:
+1 2 3 4 5

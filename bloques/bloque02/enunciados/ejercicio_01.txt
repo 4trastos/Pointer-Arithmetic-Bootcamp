@@ -1,0 +1,8 @@
+Ejercicio 01 - Primer acceso por puntero
+
+1) Declara un array de enteros de 5 elementos: {10, 20, 30, 40, 50}
+2) Usa un puntero para acceder al PRIMER elemento.
+3) Imprime el valor al que apunta el puntero (solo el número).
+
+Salida esperada:
+10

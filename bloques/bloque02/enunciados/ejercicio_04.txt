@@ -1,0 +1,8 @@
+Ejercicio 04 - Recorrer al revés con punteros
+
+1) Declara int arr[6] = {0,1,2,3,4,5};
+2) Usa un puntero que apunte al último elemento y recorre el array hacia atrás.
+3) Imprime los números en una sola línea separados por espacios (desde 5 hasta 0).
+
+Salida esperada:
+5 4 3 2 1 0

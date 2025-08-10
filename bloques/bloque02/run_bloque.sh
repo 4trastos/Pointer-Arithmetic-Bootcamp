@@ -3,12 +3,11 @@
 # ================================================================
 # Script para ejecutar un bloque de ejercicios
 # ----------------------------------------------------------------
-# Maneja la navegación entre ejercicios, compilación y tests.
+# Maneja la navegación entre ejercicios, edición, compilación y tests.
 # También gestiona el progreso y desbloquea el siguiente bloque.
 # ================================================================
 
 # Configuración inicial
-# ----------------------------------------------------------------
 ALLOW_SKIPPING=false
 [[ "$1" == "--libre" ]] && ALLOW_SKIPPING=true
 
@@ -25,16 +24,17 @@ SCRIPT_DIR=$(dirname "$0")
 ENUNCIADOS_DIR="$SCRIPT_DIR/enunciados"
 SOLUCIONES_DIR="$SCRIPT_DIR/soluciones"
 TESTS_DIR="$SCRIPT_DIR/tests"
+EJERCICIOS_DIR="$SCRIPT_DIR/ejercicios"
 PROGRESS_FILE="$SCRIPT_DIR/.progreso.tmp"
 
 # --- Validación inicial de directorios ---
-# ----------------------------------------------------------------
 validate_directories() {
     local missing_dirs=()
     
     [[ ! -d "$ENUNCIADOS_DIR" ]] && missing_dirs+=("enunciados")
     [[ ! -d "$SOLUCIONES_DIR" ]] && missing_dirs+=("soluciones")
     [[ ! -d "$TESTS_DIR" ]] && missing_dirs+=("tests")
+    [[ ! -d "$EJERCICIOS_DIR" ]] && mkdir -p "$EJERCICIOS_DIR"
     
     if [[ ${#missing_dirs[@]} -gt 0 ]]; then
         echo -e "${COLOR_ERROR}❌ Error: Faltan directorios necesarios:${COLOR_RESET}"
@@ -47,7 +47,6 @@ validate_directories() {
 }
 
 # --- Mostrar enunciado con formato ---
-# ----------------------------------------------------------------
 show_enunciado() {
     local exercise_num=$1
     local enunciado_file="$ENUNCIADOS_DIR/ejercicio_${exercise_num}.txt"
@@ -65,63 +64,62 @@ show_enunciado() {
 }
 
 # --- Mostrar menú de opciones ---
-# ----------------------------------------------------------------
 show_menu() {
     echo -e "\n${COLOR_INFO}OPCIONES:${COLOR_RESET}"
-    echo -e "1. ${COLOR_INFO}[Enter]${COLOR_RESET} - Realizar el ejercicio"
+    echo -e "1. ${COLOR_INFO}[Enter]${COLOR_RESET} - Editar y ejecutar el ejercicio"
     echo -e "2. ${COLOR_INFO}s${COLOR_RESET} - Volver al menú principal"
     if $ALLOW_SKIPPING; then
         echo -e "3. ${COLOR_INFO}n${COLOR_RESET} - Saltar al siguiente ejercicio (modo libre)"
     fi
 }
 
-# --- Crear archivo de solución si no existe ---
-# ----------------------------------------------------------------
-create_solution_file() {
+# --- Crear archivo base para el alumno si no existe ---
+create_exercise_file() {
     local exercise_num=$1
-    local solution_file="$SOLUCIONES_DIR/ejercicio_${exercise_num}.c"
+    local exercise_file="$EJERCICIOS_DIR/ejercicio_${exercise_num}.c"  # Cambiar extensión si es otro lenguaje
     
-    if [[ ! -f "$solution_file" ]]; then
-        mkdir -p "$SOLUCIONES_DIR"
-        cat > "$solution_file" <<EOF
+    if [[ ! -f "$exercise_file" ]]; then
+        mkdir -p "$EJERCICIOS_DIR"
+        cat > "$exercise_file" <<EOF
 /*
  * Ejercicio $exercise_num - Pointer Arithmetic Bootcamp
- * * Instrucciones:
-$(cat "$ENUNCIADOS_DIR/ejercicio_${exercise_num}.txt" 2>/dev/null | sed 's/^/ * /' || echo " * Completa este ejercicio según lo indicado")
+ *
+ * Instrucciones:
+$(sed 's/^/ * /' "$ENUNCIADOS_DIR/ejercicio_${exercise_num}.txt" 2>/dev/null || echo " * Completa este ejercicio según lo indicado")
+ *
+ * Implementa tu solución aquí.
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 
 int main() {
-    // Implementa tu solución aquí
+    // Tu código aquí
     return 0;
 }
 EOF
+        echo -e "${COLOR_INFO}📝 Archivo base creado: $exercise_file${COLOR_RESET}"
     fi
 }
 
 # --- Bucle principal para los ejercicios ---
-# ----------------------------------------------------------------
 main_loop() {
     local i=1
     local exercise_num
     
-    # --- Lógica de progreso ---
-    # Si existe el archivo de progreso, empieza desde el siguiente ejercicio.
+    # --- Reanuda progreso si existe ---
     if [[ -f "$PROGRESS_FILE" ]]; then
         i=$(($(cat "$PROGRESS_FILE") + 1))
         echo -e "${COLOR_INFO}📝 Reanudando el progreso desde el ejercicio $i...${COLOR_RESET}"
         sleep 2
     fi
-    # --------------------------
-
+    
     while [[ $i -le 10 ]]; do
         exercise_num=$(printf "%02d" $i)
         
         clear
         echo -e "${COLOR_TITLE}=================================================${COLOR_RESET}"
-        echo -e "${COLOR_TITLE}  BLOQUE: FUNDAMENTOS DE PUNTEROS - EJERCICIO $exercise_num${COLOR_RESET}"
+        echo -e "${COLOR_TITLE}  BLOQUE: PUNTEROS Y ARRAYS - EJERCICIO $exercise_num${COLOR_RESET}"
         echo -e "${COLOR_TITLE}=================================================${COLOR_RESET}"
         
         show_enunciado "$exercise_num"
@@ -133,12 +131,11 @@ main_loop() {
             s|S)
                 echo -e "\n${COLOR_INFO}Volviendo al menú principal...${COLOR_RESET}"
                 sleep 1
-                return 1 # Devuelve 1 para indicar que se debe salir de este script
+                return 1
                 ;;
             n|N)
                 if $ALLOW_SKIPPING; then
                     echo -e "\n${COLOR_WARNING}Saltando al siguiente ejercicio...${COLOR_RESET}"
-                    # Al saltar un ejercicio, también se guarda el progreso
                     echo "$i" > "$PROGRESS_FILE"
                     ((i++))
                     continue
@@ -153,27 +150,26 @@ main_loop() {
                 ;;
         esac
         
-        create_solution_file "$exercise_num"
+        create_exercise_file "$exercise_num"
         
-        # Abrir editor
-        ${EDITOR:-vim} "$SOLUCIONES_DIR/ejercicio_${exercise_num}.c"
+        # Abrir editor en el archivo editable
+        ${EDITOR:-vim} "$EJERCICIOS_DIR/ejercicio_${exercise_num}.c"
         
-        # Compilar y ejecutar
+        # Compilar y ejecutar test
         echo -e "\n${COLOR_INFO}--- Verificando tu solución ---${COLOR_RESET}"
         
         if gcc -Wall -Wextra -Werror -g \
-           "$SOLUCIONES_DIR/ejercicio_${exercise_num}.c" \
-           "$TESTS_DIR/test_${exercise_num}.c" \
-           -o test_exec; then
-            
-            if ./test_exec; then
+            "$EJERCICIOS_DIR/ejercicio_${exercise_num}.c" \
+            -o "$EJERCICIOS_DIR/ejercicio_${exercise_num}.out"; then
+
+            if "$TESTS_DIR/test_${exercise_num}.sh"; then
                 echo -e "\n${COLOR_SUCCESS}✅ Ejercicio $exercise_num completado correctamente!${COLOR_RESET}"
                 rm -f test_exec
-                # Guarda el progreso al completar un ejercicio
                 echo "$i" > "$PROGRESS_FILE"
                 ((i++))
             else
                 echo -e "\n${COLOR_ERROR}❌ Falló el test del ejercicio $exercise_num.${COLOR_RESET}"
+                sleep 2
                 rm -f test_exec
                 if ! $ALLOW_SKIPPING; then
                     read -p "Presiona Enter para reintentar..."
@@ -195,17 +191,15 @@ main_loop() {
         fi
     done
     
-    return 0 # Devuelve 0 para indicar un final exitoso
+    return 0
 }
 
 # --- Ejecución principal ---
-# ----------------------------------------------------------------
 validate_directories
 
 if main_loop; then
     echo -e "\n${COLOR_SUCCESS}🎉 ¡Felicidades! Has completado este bloque.${COLOR_RESET}"
     
-    # Lógica para desbloquear el siguiente bloque
     current_block_num=$(basename "$SCRIPT_DIR" | sed 's/bloque//' | sed 's/^0*//')
     next_block_num=$((current_block_num + 1))
     next_block_dir="../bloque$(printf "%02d" $next_block_num)"
@@ -214,13 +208,11 @@ if main_loop; then
         touch "$next_block_dir/unlock_code.txt"
         echo -e "${COLOR_SUCCESS}🔓 El Bloque $next_block_num ha sido desbloqueado.${COLOR_RESET}"
     fi
-
-    # Elimina el archivo de progreso del bloque actual
+    
     rm -f "$PROGRESS_FILE" 2>/dev/null
-
+    
     echo -e "${COLOR_INFO}Volviendo al menú principal...${COLOR_RESET}"
     sleep 2
 fi
 
-# Limpieza final
 rm -f test_exec 2>/dev/null
