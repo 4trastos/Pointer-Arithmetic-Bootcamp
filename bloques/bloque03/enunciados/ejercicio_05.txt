@@ -1,0 +1,9 @@
+Ejercicio 05 - Switch con default
+
+Instrucciones:
+- Declara una variable char con valor 'z'.
+- Usa switch para imprimir "Vocal" si es 'a','e','i','o','u'.
+- Imprime "Consonante" para cualquier otra letra.
+
+Salida esperada:
+Consonante

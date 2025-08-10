@@ -1,0 +1,9 @@
+Ejercicio 01 - If básico
+
+Instrucciones:
+- Declara una variable int con valor 10.
+- Usa un condicional if para imprimir "Mayor que 5" si el valor es mayor que 5.
+- Si no, imprime "No es mayor que 5".
+
+Salida esperada:
+Mayor que 5

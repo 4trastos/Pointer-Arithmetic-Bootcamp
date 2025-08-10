@@ -1,0 +1,13 @@
+Ejercicio 10 - Switch con múltiples casos
+
+Instrucciones:
+- Declara int mes = 12.
+- Usa switch para imprimir:
+  12,1,2 -> "Invierno"
+  3,4,5 -> "Primavera"
+  6,7,8 -> "Verano"
+  9,10,11 -> "Otoño"
+  Otro -> "Mes inválido"
+
+Salida esperada:
+Invierno

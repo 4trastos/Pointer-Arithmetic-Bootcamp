@@ -1,0 +1,9 @@
+Ejercicio 02 - If-else
+
+Instrucciones:
+- Declara una variable int con valor 3.
+- Usa if-else para imprimir "Par" si el número es par, o "Impar" si no lo es.
+- Recuerda usar el operador módulo %.
+
+Salida esperada:
+Impar

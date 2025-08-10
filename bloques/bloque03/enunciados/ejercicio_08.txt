@@ -1,0 +1,8 @@
+Ejercicio 08 - Negación lógica
+
+Instrucciones:
+- Declara una variable int flag = 0.
+- Imprime "Flag no está activo" si flag NO es 1.
+
+Salida esperada:
+Flag no está activo

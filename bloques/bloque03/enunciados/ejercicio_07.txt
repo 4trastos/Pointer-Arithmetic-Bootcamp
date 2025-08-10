@@ -1,0 +1,9 @@
+Ejercicio 07 - Uso de operadores lógicos
+
+Instrucciones:
+- Declara una variable int x = 15.
+- Imprime "En rango" si x > 10 y x < 20.
+- Imprime "Fuera de rango" si no.
+
+Salida esperada:
+En rango

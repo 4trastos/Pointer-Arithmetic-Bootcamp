@@ -1,0 +1,10 @@
+Ejercicio 06 - Condicional múltiple
+
+Instrucciones:
+- Declara dos variables int: a=10 y b=20.
+- Imprime "a es mayor" si a>b.
+- Imprime "b es mayor" si b>a.
+- Imprime "Son iguales" si a == b.
+
+Salida esperada:
+b es mayor

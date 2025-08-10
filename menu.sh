@@ -13,7 +13,7 @@ COLOR_INFO="\033[1;34m"
 descripciones=(
     "Fundamentos de punteros (direcciones, desreferencia, suma/resta)"
     "Punteros y arrays"
-    "Punteros y cadenas"
+    "Control de flujo y condicionales"
     "Punteros y estructuras"
     "Punteros a punteros"
     "Memoria dinámica y punteros"

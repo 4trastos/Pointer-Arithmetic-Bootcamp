@@ -1,0 +1,10 @@
+Ejercicio 09 - Nested if
+
+Instrucciones:
+- Declara int n = 7.
+- Imprime "Número positivo y par" si n > 0 y es par.
+- Imprime "Número positivo e impar" si n > 0 y es impar.
+- Imprime "Número no positivo" en otro caso.
+
+Salida esperada:
+Número positivo e impar

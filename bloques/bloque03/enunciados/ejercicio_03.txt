@@ -1,0 +1,8 @@
+Ejercicio 03 - If-else if-else
+
+Instrucciones:
+- Declara una variable int con un valor.
+- Imprime "Positivo" si es > 0, "Negativo" si es < 0, o "Cero" si es 0.
+
+Salida esperada (para valor = -2):
+Negativo
