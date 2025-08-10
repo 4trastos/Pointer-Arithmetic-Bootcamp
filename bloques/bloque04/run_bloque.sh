@@ -20,8 +20,11 @@ COLOR_ERROR="\033[1;31m"
 COLOR_WARNING="\033[1;33m"
 COLOR_INFO="\033[1;34m"
 
-# Directorios base
-SCRIPT_DIR=$(dirname "$0")
+# --- IMPORTANTE: obtener ruta absoluta del script ---
+# Esto evita que dirname "$0" devuelva "." y permita detectar correctamente
+# el nombre del directorio (por ejemplo "bloque01").
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 ENUNCIADOS_DIR="$SCRIPT_DIR/enunciados"
 SOLUCIONES_DIR="$SCRIPT_DIR/soluciones"
 TESTS_DIR="$SCRIPT_DIR/tests"
@@ -108,12 +111,21 @@ main_loop() {
     local i=1
     local exercise_num
     
-    # --- Reanuda progreso si existe ---
+    # === CORRECCIÓN ===
+    # Añadimos la validación del archivo de progreso para evitar errores
+    # si el archivo está vacío o contiene un valor no numérico.
     if [[ -f "$PROGRESS_FILE" ]]; then
-        i=$(($(cat "$PROGRESS_FILE") + 1))
-        echo -e "${COLOR_INFO}📝 Reanudando el progreso desde el ejercicio $i...${COLOR_RESET}"
-        sleep 2
+        progress_val=$(cat "$PROGRESS_FILE")
+        if [[ "$progress_val" =~ ^[0-9]+$ ]]; then
+            i=$((progress_val + 1))
+            echo -e "${COLOR_INFO}📝 Reanudando el progreso desde el ejercicio $i...${COLOR_RESET}"
+            sleep 1
+        else
+            echo -e "${COLOR_WARNING}⚠️ Archivo de progreso inválido. Reiniciando desde el ejercicio 1.${COLOR_RESET}"
+            sleep 1
+        fi
     fi
+    # ------------------
     
     while [[ $i -le 10 ]]; do
         exercise_num=$(printf "%02d" $i)
@@ -159,19 +171,25 @@ main_loop() {
         # Compilar y ejecutar test
         echo -e "\n${COLOR_INFO}--- Verificando tu solución ---${COLOR_RESET}"
         
+        # === CORRECCIÓN ===
+        # La compilación genera el ejecutable en el directorio de ejercicios.
+        # Luego se ejecuta el script de test con este ejecutable como argumento.
+        local executable_path="$EJERCICIOS_DIR/ejercicio_${exercise_num}.out"
+
         if gcc -Wall -Wextra -Werror -g \
             "$EJERCICIOS_DIR/ejercicio_${exercise_num}.c" \
-            -o "$EJERCICIOS_DIR/ejercicio_${exercise_num}.out"; then
-
-            if "$TESTS_DIR/test_${exercise_num}.sh"; then
+            -o "$executable_path"; then
+            
+            # El script de test se encarga de ejecutar el binario
+            if "$TESTS_DIR/test_${exercise_num}.sh" "$executable_path"; then
                 echo -e "\n${COLOR_SUCCESS}✅ Ejercicio $exercise_num completado correctamente!${COLOR_RESET}"
-                rm -f test_exec
+                rm -f "$executable_path"
                 echo "$i" > "$PROGRESS_FILE"
                 ((i++))
             else
                 echo -e "\n${COLOR_ERROR}❌ Falló el test del ejercicio $exercise_num.${COLOR_RESET}"
                 sleep 2
-                rm -f test_exec
+                rm -f "$executable_path"
                 if ! $ALLOW_SKIPPING; then
                     read -p "Presiona Enter para reintentar..."
                     continue
@@ -184,6 +202,7 @@ main_loop() {
                 continue
             fi
         fi
+        # ------------------
         
         if ! $ALLOW_SKIPPING; then
             read -p "Presiona Enter para continuar al siguiente ejercicio..."
@@ -201,16 +220,30 @@ validate_directories
 if main_loop; then
     echo -e "\n${COLOR_SUCCESS}🎉 ¡Felicidades! Has completado el Bloque 4.${COLOR_RESET}"
     
-    current_block_num=$(basename "$SCRIPT_DIR" | sed 's/bloque//' | sed 's/^0*//')
-    next_block_num=$((current_block_num + 1))
-    next_block_dir="../bloque$(printf "%02d" $next_block_num)"
+    # === CORRECCIÓN ===
+    # Usamos el método más robusto para obtener el número de bloque
+    current_block_basename="$(basename "$SCRIPT_DIR")"
+    current_block_num="$(echo "$current_block_basename" | grep -o '[0-9]\+' || echo "")"
     
-    if [[ -d "$next_block_dir" ]]; then
-        touch "$next_block_dir/unlock_code.txt"
-        echo -e "${COLOR_SUCCESS}🔓 El Bloque $next_block_num ha sido desbloqueado.${COLOR_RESET}"
+    if [[ -z "$current_block_num" ]]; then
+        echo -e "${COLOR_WARNING}⚠️ No se pudo determinar el número del bloque (dirname='$SCRIPT_DIR').${COLOR_RESET}"
+    else
+        current_block_num=$((10#$current_block_num))
+        next_block_num=$((current_block_num + 1))
+        repo_blocks_dir="$(dirname "$SCRIPT_DIR")"
+        next_block_dir="$repo_blocks_dir/bloque$(printf "%02d" $next_block_num)"
+    
+        if [[ -d "$next_block_dir" ]]; then
+            touch "$next_block_dir/unlock_code.txt"
+            echo -e "${COLOR_SUCCESS}🔓 El Bloque $next_block_num ha sido desbloqueado.${COLOR_RESET}"
+        else
+            echo -e "${COLOR_WARNING}⚠️ No se encontró la carpeta del siguiente bloque ($next_block_dir).${COLOR_RESET}"
+        fi
     fi
-    
+
+    # Limpiamos el archivo de progreso
     rm -f "$PROGRESS_FILE" 2>/dev/null
+    # ------------------
     
     echo -e "${COLOR_INFO}Volviendo al menú principal...${COLOR_RESET}"
     sleep 2
