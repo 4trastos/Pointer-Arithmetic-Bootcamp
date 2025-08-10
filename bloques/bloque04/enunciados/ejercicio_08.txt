@@ -1,0 +1,4 @@
+Ejercicio 08 - Estructuras anidadas y punteros
+
+Define una estructura `t_employee` con campos `int id`, `char name[50]` y `t_point location`.  
+Crea una función que reciba un puntero a `t_employee` y modifique la ubicación (`location.x` y `location.y`) usando punteros.  

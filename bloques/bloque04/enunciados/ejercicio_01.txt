@@ -1,0 +1,6 @@
+Ejercicio 01 - Declarar estructura y acceso con punteros
+
+Define una estructura `t_point` con dos campos enteros `x` e `y`.  
+Crea una función que reciba un puntero a `t_point` y modifique sus valores a `10` y `20` respectivamente.  
+
+Debes usar punteros para acceder y modificar los campos de la estructura.  

@@ -1,0 +1,5 @@
+Ejercicio 06 - Modificar estructuras usando punteros anidados
+
+Define una estructura `t_data` con un campo `int num` y un puntero a estructura `t_info *info`.  
+Define también `t_info` con un campo `char description[100]`.  
+Crea una función que reciba un puntero a `t_data` y modifique la descripción apuntada dentro de `info` a "Updated info".  

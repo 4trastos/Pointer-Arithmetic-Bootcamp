@@ -1,0 +1,4 @@
+Ejercicio 05 - Puntero a puntero de estructuras
+
+Define una estructura `t_node` con `int value` y `t_node *next`.  
+Crea una función que reciba un puntero a puntero `t_node **head` y añada un nuevo nodo con valor 42 al inicio de la lista enlazada.  

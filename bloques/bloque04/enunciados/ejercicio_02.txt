@@ -1,0 +1,6 @@
+Ejercicio 02 - Inicialización de estructura con puntero
+
+Define una estructura `t_person` con `char name[50]` y `int age`.  
+Crea una función que reciba un puntero a `t_person` y asigne el nombre "Alice" y la edad 30.  
+
+Usa punteros para modificar los campos.  

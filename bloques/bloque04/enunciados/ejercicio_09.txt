@@ -1,0 +1,4 @@
+Ejercicio 09 - Estructura con punteros y memoria dinámica
+
+Define una estructura `t_buffer` con `char *data` y `int size`.  
+Crea una función que reciba un puntero a `t_buffer`, reserve memoria dinámica para `data` con tamaño 100 y rellene la cadena con 'A'.  

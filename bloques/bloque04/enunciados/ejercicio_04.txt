@@ -1,0 +1,6 @@
+Ejercicio 04 - Puntero a estructura y acceso con ->
+
+Define la estructura `t_rect` con dos campos `t_point top_left` y `t_point bottom_right`.  
+Crea una función que reciba un puntero a `t_rect` y calcule el área del rectángulo.  
+Devuelve el área como entero.  
+Usa el operador `->` y punteros para acceder a los campos.  

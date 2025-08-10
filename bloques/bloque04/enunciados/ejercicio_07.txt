@@ -1,0 +1,4 @@
+Ejercicio 07 - Recorrer array de estructuras con punteros
+
+Define una estructura `t_point` con `int x, y`.  
+Crea una función que reciba un puntero a un array de `t_point` y su tamaño, y que imprima en consola las coordenadas de cada punto usando aritmética de punteros.  

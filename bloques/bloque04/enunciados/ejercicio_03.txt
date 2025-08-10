@@ -1,0 +1,4 @@
+Ejercicio 03 - Array de estructuras y punteros
+
+Define una estructura `t_point` con `int x, y`.  
+Crea una función que reciba un puntero a un array de `t_point` y su tamaño, y que sume 1 a ambos campos (`x` y `y`) de cada elemento.  
