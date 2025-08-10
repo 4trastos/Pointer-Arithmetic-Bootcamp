@@ -65,7 +65,7 @@ find bloques -name "run_bloque.sh" -exec chmod +x {} \;
 | ------ | ---------------------------------------------------------------- |
 | 1      | Fundamentos de punteros (direcciones, desreferencia, suma/resta) |
 | 2      | Punteros y arrays                                                |
-| 3      | Punteros y cadenas                                               |
+| 3      | Control de flujo y condicionales                                 |
 | 4      | Punteros y estructuras                                           |
 | 5      | Punteros a punteros                                              |
 | 6      | Memoria dinámica y punteros                                      |
