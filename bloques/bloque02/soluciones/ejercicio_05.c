@@ -1,12 +1,18 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int main(void) {
+int main() {
     int arr[4] = {2,4,6,8};
-    int *p = arr;
-    int sum = 0;
-    for (int i = 0; i < 4; ++i) {
-        sum += *(p + i);
+    int *ptr = arr;
+    int len = sizeof(arr) / sizeof(arr[0]) -1;
+    int result = 0;
+
+    while (len >= 0)
+    {
+	    result = result + *ptr;
+	    ptr++;
+	    len--;
     }
-    printf("%d\n", sum);
+    printf("%d\n", result);
     return 0;
 }
