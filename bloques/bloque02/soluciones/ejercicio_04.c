@@ -1,12 +1,17 @@
 #include <stdio.h>
 
-int main(void) {
+int main() {
     int arr[6] = {0,1,2,3,4,5};
-    int *p = arr + 5; /* apunta al último */
-    for (int i = 0; i < 6; ++i) {
-        printf("%d", *(p - i));
-        if (i < 5) printf(" ");
+    int *ptr = arr;
+    int *last;
+    int i = sizeof(arr) / sizeof(arr[0]) -1;
+
+    last = ptr + (sizeof(arr) / sizeof(arr[0]) -1);
+    while (i >= 0)
+    {
+	    printf("%d", *last);
+	    last--;
+	    i--;
     }
-    printf("\n");
     return 0;
 }
