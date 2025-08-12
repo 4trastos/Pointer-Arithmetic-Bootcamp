@@ -2,10 +2,10 @@
 set -e
 "./ejercicios/ejercicio_04.out"
 output=$(./ejercicios/ejercicio_04.out)
-if [ "$output" = "5 4 3 2 1 0" ]; then
+if [ "$output" = "543210" ]; then
     echo "OK"
     exit 0
 else
-    echo "FALLO: salida='$output' (esperado: 5 4 3 2 1 0)"
+    echo "FALLO: salida='$output' (esperado: 543210)"
     exit 1
 fi
