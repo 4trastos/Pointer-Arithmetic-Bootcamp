@@ -1,0 +1,11 @@
+Ejercicio 02: Modificando un valor con doble puntero
+
+Crea un programa que:
+1. Declare una variable entera `x` inicializada en 10.
+2. Declare un puntero `p1` a `x`.
+3. Declare un puntero a puntero `p2` a `p1`.
+4. Cambie el valor de `x` a 99 usando únicamente `p2`.
+5. Imprima `x`.
+
+Salida esperada:
+99

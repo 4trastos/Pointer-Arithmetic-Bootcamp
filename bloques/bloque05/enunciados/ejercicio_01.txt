@@ -1,0 +1,10 @@
+Ejercicio 01: Accediendo a un valor con doble puntero
+
+Escribe un programa en C que:
+1. Declare una variable entera `x` con el valor 42.
+2. Declare un puntero `p1` que apunte a `x`.
+3. Declare un puntero a puntero `p2` que apunte a `p1`.
+4. Imprima el valor de `x` usando únicamente `p2`.
+
+Salida esperada:
+42

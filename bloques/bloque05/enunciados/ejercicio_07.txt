@@ -1,0 +1,10 @@
+Ejercicio 07: Tabla de strings
+
+Escribe un programa que:
+1. Declare un array de punteros a `char` con 3 cadenas: "uno", "dos", "tres".
+2. Use un puntero a puntero para recorrer e imprimir cada cadena en una línea.
+
+Salida esperada:
+uno
+dos
+tres

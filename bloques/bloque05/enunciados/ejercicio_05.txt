@@ -1,0 +1,10 @@
+Ejercicio 05: Array dinámico con doble puntero
+
+Escribe un programa que:
+1. Use `malloc` para crear dinámicamente un array de 3 enteros.
+2. Inicialice el array con los valores 7, 8, 9.
+3. Use un puntero a puntero para acceder e imprimir sus valores separados por espacio.
+4. Libere la memoria asignada.
+
+Salida esperada:
+7 8 9

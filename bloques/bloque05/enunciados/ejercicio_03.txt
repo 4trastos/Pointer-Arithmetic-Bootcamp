@@ -1,0 +1,11 @@
+Ejercicio 03: Intercambiar valores usando doble puntero
+
+Escribe un programa que:
+1. Declare dos variables enteras `a = 5` y `b = 9`.
+2. Declare dos punteros `pa` y `pb` apuntando a `a` y `b` respectivamente.
+3. Declare un puntero a puntero `ppa` apuntando a `pa` y otro `ppb` apuntando a `pb`.
+4. Intercambie los valores de `a` y `b` usando **únicamente** `ppa` y `ppb`.
+5. Imprima los valores finales de `a` y `b` separados por un espacio.
+
+Salida esperada:
+9 5

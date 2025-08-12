@@ -1,0 +1,10 @@
+Ejercicio 04: Pasar doble puntero a función
+
+Crea un programa que:
+1. Defina una función `void cambiar(int **p)` que cambie el valor apuntado por `*p` a 123.
+2. En `main`, crea una variable `x = 0` y un puntero `px` que apunte a `x`.
+3. Llama a la función `cambiar` pasando la dirección de `px`.
+4. Imprima el valor final de `x`.
+
+Salida esperada:
+123

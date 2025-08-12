@@ -1,0 +1,12 @@
+Ejercicio 08: Modificar elementos de tabla de strings
+
+Crea un programa que:
+1. Declare un array dinámico de 2 punteros a `char`.
+2. Asigne dinámicamente memoria para dos cadenas "hola" y "mundo".
+3. Use un puntero a puntero para cambiar la segunda cadena por "C".
+4. Imprima ambas cadenas en líneas separadas.
+5. Libere toda la memoria.
+
+Salida esperada:
+hola
+C

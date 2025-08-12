@@ -1,0 +1,10 @@
+Ejercicio 10: Liberar lista enlazada con puntero a puntero
+
+Usa la estructura del ejercicio anterior, pero:
+1. Crea una función `void liberar(Nodo **lista)` que libere todos los nodos.
+2. Inserta 3 nodos con valores 10, 20, 30.
+3. Llama a `liberar` pasando la dirección de `lista`.
+4. Imprime "OK" si la lista queda vacía.
+
+Salida esperada:
+OK

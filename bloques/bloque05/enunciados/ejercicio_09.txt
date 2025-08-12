@@ -1,0 +1,11 @@
+Ejercicio 09: Lista enlazada simple
+
+Crea un programa que:
+1. Defina una estructura `Nodo` con `int valor` y `struct Nodo *sig`.
+2. Use un puntero a puntero para insertar un nodo al inicio de la lista.
+3. Inserte dos nodos con valores 1 y 2.
+4. Recorra la lista e imprima los valores, uno por línea.
+
+Salida esperada:
+2
+1

@@ -1,0 +1,10 @@
+Ejercicio 06: Cambiar puntero dentro de función
+
+Escribe un programa que:
+1. Declare un puntero `p` inicializado en `NULL`.
+2. Defina una función `void asignar(int **pp)` que asigne memoria para un entero y lo ponga en 55.
+3. Llame a la función desde `main` y luego imprima el valor apuntado por `p`.
+4. Libere la memoria asignada.
+
+Salida esperada:
+55
