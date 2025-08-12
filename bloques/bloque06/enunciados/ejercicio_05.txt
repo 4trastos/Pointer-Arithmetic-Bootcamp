@@ -1,0 +1,7 @@
+Ejercicio 5: Cadena dinámica
+----------------------------
+Escribe un programa que:
+1. Pida al usuario una palabra.
+2. Reserve memoria dinámica exacta para almacenarla.
+3. Copie la palabra a la memoria asignada.
+4. Imprima la palabra y su longitud.

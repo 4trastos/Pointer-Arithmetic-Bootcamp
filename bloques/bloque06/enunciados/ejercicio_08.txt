@@ -1,0 +1,7 @@
+Ejercicio 8: Función con malloc
+-------------------------------
+Escribe una función que:
+- Reciba un entero n.
+- Devuelva un puntero a un array de n enteros inicializados con su índice.
+En main:
+- Llama a la función, imprime los valores, y libera la memoria.

@@ -1,0 +1,12 @@
+Ejercicio 2: Reservar memoria para un array de enteros
+------------------------------------------------------
+Escribe un programa en C que:
+1. Pida al usuario un número n.
+2. Use malloc para reservar memoria para un array de n enteros.
+3. Inicialice el array con valores de 1 a n.
+4. Imprima los valores.
+5. Libere la memoria.
+
+Ejemplo de salida:
+Introduce n: 5
+1 2 3 4 5

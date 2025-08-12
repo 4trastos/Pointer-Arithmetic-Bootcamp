@@ -1,0 +1,8 @@
+Ejercicio 10: Copia dinámica de estructuras
+-------------------------------------------
+Define una estructura Persona con nombre y edad.
+Escribe un programa que:
+1. Cree una Persona original.
+2. Reserve memoria dinámica para una copia.
+3. Copie sus datos.
+4. Imprima la copia y libere la memoria.

@@ -1,0 +1,7 @@
+Ejercicio 9: Comprobación de errores
+------------------------------------
+Escribe un programa que:
+1. Intente reservar una cantidad muy grande de memoria.
+2. Compruebe si malloc devolvió NULL.
+3. Si es NULL, muestre "Error de memoria".
+4. Si no, libere la memoria.

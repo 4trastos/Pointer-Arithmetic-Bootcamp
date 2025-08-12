@@ -1,0 +1,6 @@
+Ejercicio 6: Liberación segura
+------------------------------
+Escribe un programa que:
+1. Reserve memoria con malloc para un array de 4 floats.
+2. Inicialice y muestre los valores.
+3. Libere la memoria y establezca el puntero a NULL.

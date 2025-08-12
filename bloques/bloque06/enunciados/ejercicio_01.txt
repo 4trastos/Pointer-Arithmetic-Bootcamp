@@ -1,0 +1,11 @@
+Ejercicio 1: Reservar memoria para un entero
+--------------------------------------------
+Escribe un programa en C que:
+1. Utilice malloc para reservar memoria para un entero.
+2. Asigne el valor 42 a ese entero.
+3. Imprima el valor y la dirección de memoria asignada.
+4. Libere la memoria al final.
+
+Ejemplo de salida:
+Valor: 42
+Dirección: 0x55f8a3b9e260

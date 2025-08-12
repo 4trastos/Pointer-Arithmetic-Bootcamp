@@ -1,0 +1,7 @@
+Ejercicio 7: Matriz dinámica
+----------------------------
+Escribe un programa que:
+1. Reserve memoria para una matriz de 3x3 enteros usando malloc para cada fila.
+2. Inicialice con valores consecutivos.
+3. Imprima la matriz.
+4. Libere toda la memoria.

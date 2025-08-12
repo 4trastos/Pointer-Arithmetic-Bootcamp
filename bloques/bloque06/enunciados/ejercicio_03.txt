@@ -1,0 +1,6 @@
+Ejercicio 3: Uso de calloc
+--------------------------
+Escribe un programa que:
+1. Reserve memoria para un array de 5 enteros con calloc.
+2. Imprima el contenido inicial (debe ser 0).
+3. Libere la memoria.

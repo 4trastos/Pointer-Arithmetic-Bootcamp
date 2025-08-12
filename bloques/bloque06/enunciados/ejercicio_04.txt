@@ -1,0 +1,7 @@
+Ejercicio 4: Redimensionar memoria con realloc
+----------------------------------------------
+Escribe un programa que:
+1. Reserve memoria para un array de 3 enteros y los inicialice con 1, 2, 3.
+2. Use realloc para ampliar a 5 enteros.
+3. Inicialice los nuevos elementos con 4 y 5.
+4. Imprima el array resultante.
